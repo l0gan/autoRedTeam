@@ -1,22 +1,5 @@
-                    /$$               /$$$$$$$                  /$$ /$$$$$$$$
-                    | $$              | $$__  $$                | $$|__  $$__/
-/$$$$$$  /$$   /$$ /$$$$$$    /$$$$$$ | $$  \ $$  /$$$$$$   /$$$$$$$   | $$  /$$$$$$   /$$$$$$  /$$$$$$/$$$$
-|____  $$| $$  | $$|_  $$_/   /$$__  $$| $$$$$$$/ /$$__  $$ /$$__  $$   | $$ /$$__  $$ |____  $$| $$_  $$_  $$
-/$$$$$$$| $$  | $$  | $$    | $$  \ $$| $$__  $$| $$$$$$$$| $$  | $$   | $$| $$$$$$$$  /$$$$$$$| $$ \ $$ \ $$
-/$$__  $$| $$  | $$  | $$ /$$| $$  | $$| $$  \ $$| $$_____/| $$  | $$   | $$| $$_____/ /$$__  $$| $$ | $$ | $$
-|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$/| $$  | $$|  $$$$$$$|  $$$$$$$   | $$|  $$$$$$$|  $$$$$$$| $$ | $$ | $$
-\_______/ \______/    \___/   \______/ |__/  |__/ \_______/ \_______/   |__/ \_______/ \_______/|__/ |__/ |__/
+#! /bin/sh
 
+tcpdump -s0 -i eth0 -c 100 | awk '{ print gensub(/(.*)\..*/,"\\1","g",$3), $4, gensub(/(.*)\..*/,"\\1","g",$5) }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)'| awk '{print $1}'| grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'> IPs.txt
 
-autoRedTeam
-by: Kirk Hayes (l0gan)
-
-autoRedTeam is a set of scripts that is designed to be placed on a device you can leave on site (or run on your laptop) 
-that will perform Red Team actions and gain you access without you needing to be there. Eventually I may make a device
-that you can leave on site, come back at a later time, and you have DA privileges. (Based on idea by Kevin Robertson)
-
-autoRedTeam.py - Main script to run
-USE:
-python autoRedTeam.py
-
-sniffer.sh - Sniffer used in gathering information used to set your IP address, keeping you under the radar.
+cat IPs.txt |uniq -c | sort -n | tail -n1 | awk '{print $2}'> IP.txt
