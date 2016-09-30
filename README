@@ -14,8 +14,7 @@ by: Kirk Hayes (l0gan)
 autoRedTeam is a set of scripts that is designed to be placed on a device you can leave on site (or run on your laptop) 
 that will perform Red Team actions.
 
-autoRedTeam.py - Main script to run
 USE:
-python autoRedTeam.py
+python ipGen.py
 
 sniffer.sh - Sniffer used in gathering information used to set your IP address, keeping you under the radar.
