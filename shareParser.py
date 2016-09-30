@@ -15,7 +15,7 @@ root = 'mnt'
 
 def nmapPortScan():
 	port='111'
-	hosts='172.16.133.134'
+	hosts='172.19.51.0/24'
 	IP = []
 	print('[+] Scanning ' + hosts + ' for port ' + port)
 	nm=nmap.PortScanner()
