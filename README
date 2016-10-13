@@ -11,10 +11,12 @@
 autoRedTeam
 by: Kirk Hayes (l0gan)
 
-autoRedTeam is a set of scripts that is designed to be placed on a device you can leave on site (or run on your laptop) 
+autoRedTeam is a set of scripts that is designed to be placed on a device you can leave on site (or run on your laptop)
 that will perform Red Team actions.
 
 USE:
-python ipGen.py
+python autoRedTeam.py
 
 sniffer.sh - Sniffer used in gathering information used to set your IP address, keeping you under the radar.
+ipGen.py - Runs sniffer.sh to sniff the network and find out the IP addressing scheme. It then randomizes your MAC address, hostname, and sets your IP statically based on the subnet.
+shareParser.py - Looks on the network for open NFS shares, then attempts to find sensitive data in those shares.
