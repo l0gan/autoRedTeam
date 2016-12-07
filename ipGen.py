@@ -27,7 +27,7 @@ class ipGen():
             os.system("macchanger -r eth0")
             print("Your MAC address has been changed.")
             os.system("ifconfig eth0 up")
-            raw_input("Your MAC address and hostname have been changed. You can now safely plug in the network...")
+            #raw_input("Your MAC address and hostname have been changed. You can now safely plug in the network...")
 
     def id_generator(self, size=4, chars=string.digits):
         return ''.join(random.choice(chars) for _ in range(size))
