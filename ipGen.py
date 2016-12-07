@@ -24,10 +24,10 @@ class ipGen():
 
     def macchanger(self):
             print("Changing MAC Address...")
-            os.system("ifconfig eth0 down")
             os.system("macchanger -r eth0")
             print("Your MAC address has been changed.")
             os.system("ifconfig eth0 up")
+            raw_input("Your MAC address and hostname have been changed. You can now safely plug in the network...")
 
     def id_generator(self, size=4, chars=string.digits):
         return ''.join(random.choice(chars) for _ in range(size))
@@ -64,6 +64,7 @@ class ipGen():
         print("Your IP has been set to: " + newip)
 
     def main(self):
+        os.system("ifconfig eth0 down")
         self.hostnameChanger()
         self.macchanger()
         self.IPDetermine()
